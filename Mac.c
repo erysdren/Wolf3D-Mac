@@ -1562,7 +1562,7 @@ pascal Boolean StandardModalFilterProc(DialogPtr theDialog, EventRecord *theEven
 		PenSize(3, 3);
 		FrameRoundRect(&theRect, 16, 16);
 	}
-	return (FALSE);		//¥	Tells dialog manager to handle the event
+	return (FALSE);		//â€¢	Tells dialog manager to handle the event
 }
 
 

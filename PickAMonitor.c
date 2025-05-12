@@ -106,7 +106,7 @@ GDHandle MonitorFromPoint(Point *thePoint)
 
 
 
-//¥	----------------------------------------	PickAMonitor
+//â€¢	----------------------------------------	PickAMonitor
 
 GDHandle PickAMonitor(int theDepth, Boolean colorRequired, short minWidth, short minHeight)
 {
@@ -152,9 +152,9 @@ GDHandle PickAMonitor(int theDepth, Boolean colorRequired, short minWidth, short
 		return 0;
 	}
 
-	//¥	Start an event loop going.  Rather than using modalDialog with a gnarly filter, we'll just display the dialog
-	//¥	then use a gnarly event loop to accommodate it.  This will go on until the user selects either "This Monitor"
-	//¥	(ok) or "Quit" (cancel).
+	//â€¢	Start an event loop going.  Rather than using modalDialog with a gnarly filter, we'll just display the dialog
+	//â€¢	then use a gnarly event loop to accommodate it.  This will go on until the user selects either "This Monitor"
+	//â€¢	(ok) or "Quit" (cancel).
 	
 	theDialog = GetNewDialog(2000, nil, (WindowPtr) -1L);
 	CenterWindowOnMonitor((WindowPtr) theDialog, GetMainDevice());
@@ -190,7 +190,7 @@ GDHandle PickAMonitor(int theDepth, Boolean colorRequired, short minWidth, short
 					
 					break;
 			
-				//¥	Did we mouse-down in the dialogs drag-bar?
+				//â€¢	Did we mouse-down in the dialogs drag-bar?
 				case mouseDown:
 					if (FindWindow(theEvent.where, (WindowPtr *) &theDialog) == inDrag)
 					{
@@ -204,21 +204,21 @@ GDHandle PickAMonitor(int theDepth, Boolean colorRequired, short minWidth, short
 					}
 
 				default:
-					//¥	If not, perform regular dialog event processing
+					//â€¢	If not, perform regular dialog event processing
 					DialogSelect(&theEvent, &theDialog, &itemHit);
 			}
 		}
 	} while ((itemHit != ok) && (itemHit != cancel));
 
-	//¥	Ok, the dialog is still the active grafport so all coordinates are in its local system.  If I define a point
-	//¥	as (0, 0) now it will be the upper left corner of the dialog's drawing area.  I then turn this to a global screen
-	//¥	coordinate and call GetMonitorFromPoint.
+	//â€¢	Ok, the dialog is still the active grafport so all coordinates are in its local system.  If I define a point
+	//â€¢	as (0, 0) now it will be the upper left corner of the dialog's drawing area.  I then turn this to a global screen
+	//â€¢	coordinate and call GetMonitorFromPoint.
 	
 	SetPt(&thePoint, 0, 0);
 	LocalToGlobal(&thePoint);
 	theMonitor = MonitorFromPoint(&thePoint);
 
-	//¥	Restore our current graphics environment and return the monitor reference.
+	//â€¢	Restore our current graphics environment and return the monitor reference.
 	SetPort(savedPort);
 	DisposeDialog(theDialog);
 
@@ -231,7 +231,7 @@ GDHandle PickAMonitor(int theDepth, Boolean colorRequired, short minWidth, short
 
 
 
-//¥	----------------------------------------	CheckMonitor
+//â€¢	----------------------------------------	CheckMonitor
 
 void CheckMonitor(DialogPtr theDialog, int bitDepth, Boolean colorRequired, short minWidth, short minHeight)
 {
@@ -274,7 +274,7 @@ GrafPtr	savedPort;
 	SetPort(savedPort);
 	
 	if (badMonitor) {
-		//¥	Gray-out the "This Monitor" button
+		//â€¢	Gray-out the "This Monitor" button
 		GetDialogItem(theDialog, ok, &theType, &theHandle, &theRect);
 		HiliteControl((ControlHandle) theHandle, 255);
 		OutlineOK(theDialog, FALSE);
@@ -284,7 +284,7 @@ GrafPtr	savedPort;
 		return;
 	}
 
-	//¥	Activate the "This Monitor" button and put up the no problem text.
+	//â€¢	Activate the "This Monitor" button and put up the no problem text.
 	GetIndString(message, PAMStrings, NoProblemString);
 	SetDialogItemText(theHandle, message);
 	GetDialogItem(theDialog, ok, &theType, &theHandle, &theRect);
@@ -295,7 +295,7 @@ GrafPtr	savedPort;
 	EndUpdate((WindowPtr) theDialog);
 }
 
-//¥	----------------------------------------	OutlineOK
+//â€¢	----------------------------------------	OutlineOK
 
 void OutlineOK(DialogPtr theDialog, Boolean enabled)
 {
