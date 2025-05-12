@@ -6,7 +6,7 @@
 
 **********************************/
 
-#include "WolfDef.h"		/* Get the prototypes */
+#include "wolfdef.h"		/* Get the prototypes */
 #include <string.h>
 #include <sound.h>
 #include <stdio.h>

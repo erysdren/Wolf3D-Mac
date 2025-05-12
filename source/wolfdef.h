@@ -25,7 +25,7 @@ typedef unsigned short angle_t;		/* Must be short to allow wraparound */
 typedef short fixed_t;				/* 8.8 fixed point number */	
 typedef unsigned short ufixed_t;	/* 8.8 unsigned fixed point number */
 
-#include <burger.h>		/* My standard system equates */
+#include "Burger.h"		/* My standard system equates */
 #include "States.h"		/* Think state equates */
 #include "Sounds.h"		/* Sound equates */
 #include "Sprites.h"	/* Sprite indexs */

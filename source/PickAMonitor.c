@@ -1,4 +1,4 @@
-#include "WolfDef.h"
+#include "wolfdef.h"
 #include <Palettes.h>
 #include <gestalt.h>
 #include "PickAMonitor.h"
