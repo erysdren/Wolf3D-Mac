@@ -21,9 +21,9 @@ segment "Wolf3d";		/* Code segment */
 #define	SHORTTOANGLESHIFT	7	/* 0x10000 to ANGLES */
 #define	SLOPEBITS 9		/* Used in AngleFromSlope2 */
 
-typedef unsigned short angle_t;		/* Must be short to allow wraparound */
-typedef short fixed_t;				/* 8.8 fixed point number */	
-typedef unsigned short ufixed_t;	/* 8.8 unsigned fixed point number */
+typedef uint16_t angle_t;		/* Must be short to allow wraparound */
+typedef int16_t fixed_t;				/* 8.8 fixed point number */
+typedef uint16_t ufixed_t;	/* 8.8 unsigned fixed point number */
 
 #include "Burger.h"		/* My standard system equates */
 #include "States.h"		/* Think state equates */

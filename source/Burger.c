@@ -6,11 +6,11 @@
 
 **********************************/
 
+#include <stdint.h>
+
 #include "wolfdef.h"		/* Get the prototypes */
 #include <string.h>
-#include <sound.h>
 #include <stdio.h>
-#include <palettes.h>
 #include "SoundMusicSystem.h"
 #include "PickAMonitor.h"
 
@@ -1081,6 +1081,8 @@ void DLZSS(Byte *Dest,Byte *Src,LongWord Length)
 
 void *AllocSomeMem(LongWord Size)
 {
+	return SDL_malloc(Size);
+#if 0
 	void *MemPtr;
 	Word Stage;
 	
@@ -1096,6 +1098,7 @@ void *AllocSomeMem(LongWord Size)
 		MemPtr = NewPtrSys(Size);
 	}
 	return MemPtr;
+#endif
 }
 
 /**********************************
@@ -1133,5 +1136,5 @@ static Word FreeStage(Word Stage,LongWord Size)
 
 void FreeSomeMem(void *MemPtr)
 {
-	DisposePtr(MemPtr);
+	SDL_free(MemPtr);
 }

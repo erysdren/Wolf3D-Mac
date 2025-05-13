@@ -1,9 +1,15 @@
-typedef unsigned int Word;
-typedef unsigned long LongWord;
-#ifndef __MACTYPES__
-typedef unsigned char Byte;
-typedef unsigned char Boolean;
-#endif
+#ifndef _BURGER_H_
+#define _BURGER_H_
+
+#include <SDL3/SDL.h>
+
+typedef uint16_t Word;
+typedef uint32_t LongWord;
+typedef uint8_t Byte;
+typedef uint8_t Boolean;
+typedef int EventRecord;
+typedef int Handle;
+typedef SDL_Rect Rect;
 
 #define BLACK 255
 #define DARKGREY 250
@@ -22,8 +28,6 @@ typedef unsigned char Boolean;
 #define LIGHTGREY 43
 #define WHITE 0
 
-#define __MAC__
-#define __BIGENDIAN__
 #define SfxActive 1
 #define MusicActive 2
 
@@ -31,7 +35,7 @@ typedef unsigned char Boolean;
 #define SetAuxType(x,y)
 #define SetFileType(x,y)
 
-extern unsigned char *VideoPointer;
+extern uint8_t *VideoPointer;
 extern Word KeyModifiers;
 extern Word ScanCode;
 extern Word KilledSong;
@@ -44,7 +48,7 @@ extern Handle RezHandle;
 void DLZSS(Byte *Dest, Byte *Src,LongWord Length);
 void DLZB(Byte *Dest, Byte *Src,LongWord Length);
 LongWord SwapLong(LongWord Val);
-unsigned short SwapUShort(unsigned short Val);
+uint16_t SwapUShort(uint16_t Val);
 short SwapShort(short Val);
 
 void WaitTick(void);
@@ -88,10 +92,10 @@ Word TestMShape(Word x,Word y,void *ShapePtr);
 Word TestMBShape(Word x,Word y,void *ShapePtr,void *BackPtr);
 
 void SetAPalette(Word PalNum);
-void SetAPalettePtr(unsigned char *PalPtr);
+void SetAPalettePtr(uint8_t *PalPtr);
 void FadeTo(Word PalNum);
 void FadeToBlack(void);
-void FadeToPtr(unsigned char *PalPtr);
+void FadeToPtr(uint8_t *PalPtr);
 
 void *LoadAResource(Word RezNum);
 void ReleaseAResource(Word RezNum);
@@ -100,3 +104,5 @@ void *LoadAResource2(Word RezNum,LongWord Type);
 void ReleaseAResource2(Word RezNum,LongWord Type);
 void KillAResource2(Word RezNum,LongWord Type);
 void SaveJunk(void *AckPtr,Word Length);
+
+#endif /* _BURGER_H_ */
